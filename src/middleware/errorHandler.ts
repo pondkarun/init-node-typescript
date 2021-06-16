@@ -1,10 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-
-interface Error {
-    statusCode: number,
-    message: any,
-    validation: any,
-}
+import { Error } from './../interface/errorInterface';
 
 export default (err: Error, req: Request, res: Response, next: NextFunction) => {
     const statusCode = err.statusCode || 500;
