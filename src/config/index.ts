@@ -8,6 +8,8 @@ const config = {
     JWT_SECRET: process.env.JWT_SECRET,
     HOST_SWAGGER: process.env.HOST_SWAGGER,
     SERVICE_HOST: process.env.SERVICE_HOST,
+    STATUS_CODE_ERROR: Number(process.env.STATUS_CODE_ERROR),
+    STATUS_CODE: Number(process.env.STATUS_CODE),
 
     DB_USERNAME_DEV: process.env.DB_USERNAME_DEV,
     DB_PASSWORD_DEV: process.env.DB_PASSWORD_DEV,
