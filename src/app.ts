@@ -11,6 +11,7 @@ import errorHandler from './middleware/errorHandler'
 /* Router */
 import indexRouter from './routes'
 import authRouter from './routes/authRouter'
+import uploadRouter from './routes/uploadRouter'
 
 
 /* config app */
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /* Router */
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/upload', uploadRouter);
 
 app.use((req, res, next) => {
     next(createError(404));
