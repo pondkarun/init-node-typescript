@@ -1,3 +1,4 @@
+import { Response } from "express";
 import { sequelize } from '../models'
 import { initModels } from "../models/init-models";
 import bcrypt from 'bcryptjs'
@@ -43,6 +44,13 @@ export const decodeToken = async (auth: any) => {
     return jwt_decode(token);
 }
 
+/* ผลลัพค่า */
+export const result = async (res: Response, data: any, status: number = config.STATUS_CODE) => {
+    return res.status(status).json({
+        items: data,
+        status_code: status,
+    });
+}
 
 export default {
     sequelizeString,
