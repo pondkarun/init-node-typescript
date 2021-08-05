@@ -5,6 +5,8 @@ import upload from 'express-fileupload'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import helmet from 'helmet'
+import paginate from 'express-paginate'
+import bodyParser from 'body-parser'
 
 import errorHandler from './middleware/errorHandler'
 
@@ -17,9 +19,13 @@ import uploadRouter from './routes/uploadRouter'
 /* config app */
 const app = express();
 
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
 app.use(cors());
 app.use(helmet());
 app.use(upload())
+app.use(paginate.middleware(10, 50));
 
 // view engine setup
 
@@ -38,4 +44,5 @@ app.use((req, res, next) => {
 });
 
 app.use(errorHandler);
+
 export default app;
